@@ -3,7 +3,7 @@
   import { CardImg, CardBody, CardText, CardTitle, Breadcrumb, BreadcrumbItem, Card,  Button,  Modal, ModalHeader, ModalBody, Label,Row,Col  } from 'reactstrap';
   import { Link } from 'react-router-dom';
   import { Control, LocalForm,Errors } from 'react-redux-form';
-
+  import { Loading } from './LoadingComponent';
 
   
 
@@ -154,7 +154,26 @@ handleSubmit(values) {
   
   
    const DishDetail =(props) =>{  
-       if(props.dish != null) {
+          
+    if (props.isLoading) {
+      return(
+          <div className="container">
+              <div className="row">            
+                  <Loading />
+              </div>
+          </div>
+      );
+  }
+  else if (props.errMess) {
+      return(
+          <div className="container">
+              <div className="row">            
+                  <h4>{props.errMess}</h4>
+              </div>
+          </div>
+      );
+  }
+      else if (props.dish != null) {
          return( 
               <div className="container">
               <div className="row">
