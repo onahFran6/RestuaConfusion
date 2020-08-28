@@ -36,7 +36,7 @@ toggleComment(){
 
 handleSubmit(values) {
   this.toggleComment();
-  this.props.addComment(this.props.dishId,values.rating,values.author,values.comment);
+  this.props.postComment(this.props.dishId,values.rating,values.author,values.comment);
     
 }
 
@@ -124,7 +124,7 @@ handleSubmit(values) {
         }
     
         
-        function RenderComments({comments,addComment,dishId}) {
+        function RenderComments({comments,postComment,dishId}) {
           if (comments != null){
           return (  
               <div className="col-12 col-md-5 m-1 ">
@@ -139,7 +139,7 @@ handleSubmit(values) {
                         })}
                       </ul>
                       <div>
-                        <CommentForm  dishId={dishId} addComment={addComment} />                        
+                        <CommentForm  dishId={dishId} postComment={postComment} />                        
                       </div>
                     </div>
                   );
@@ -190,7 +190,7 @@ handleSubmit(values) {
               <div className="row">
                    <RenderDish Dish={props.dish}/>                 
                   <RenderComments  comments={props.comments} 
-                  addComment={props.addComment}
+                  postComment={props.postComment}
                   dishId={props.dish.id}
                    />
               </div>
